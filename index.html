@@ -12,9 +12,15 @@
 <body>
 
 <header class="header">
+  <button class="menu-btn" id="js-menu-btn" aria-label="メニューを開く">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <a href="index.html"><img src="images/logo.png" class="logo" alt="SUGIMOTO LAB’"></a>
   
-  <nav class="nav-menu">
+  <nav class="nav-menu" id="js-nav-menu">
     <ul>
       <li><a href="index.html" class="current">HOME</a></li>
       <li><a href="menu.html">施術内容</a></li>
@@ -134,6 +140,16 @@
     LINEで予約
   </a>
 </div>
+
+<script>
+  const menuBtn = document.getElementById('js-menu-btn');
+  const navMenu = document.getElementById('js-nav-menu');
+
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+</script>
   
 </body>
 </html>
