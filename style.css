@@ -1,334 +1,753 @@
-body {
-  margin: 0;
-  font-family: 'Noto Serif JP', serif;
-  background: linear-gradient(180deg, #F7F6F3 0%, #F2EFEA 100%);
-  color: #333;
-  padding-bottom: 120px;
-}
+/* ==============================
+   基本設定
+============================== */
 
-/* =========================
-   HEADER & HAMBURGER MENU
-========================= */
-
-/* ヘッダー全体のレイアウト（ボタンを左、ロゴを中央に） */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* ロゴを中央に寄せる基本設定 */
-  position: relative;
-  padding: 20px;
-  background-color: #F7F6F3;
-  min-height: 40px;
-  z-index: 1000;
-}
-
-.logo {
-  width: 160px;
-}
-
-/* ハンバーガーボタン（左上に固定配置） */
-.menu-btn {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1002;
-  padding: 0;
-}
-
-/* 漢数字の「三」を形作る3本の線 */
-.menu-btn span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #333;
-  border-radius: 2px;
-  transition: all 0.3s ease-in-out;
-}
-
-.menu-btn span:nth-child(1) { top: 0; }
-.menu-btn span:nth-child(2) { top: 10px; }
-.menu-btn span:nth-child(3) { bottom: 0; }
-
-/* ボタンがアクティブ（×印）になったとき */
-.menu-btn.active span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-.menu-btn.active span:nth-child(2) {
-  opacity: 0;
-}
-.menu-btn.active span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-/* ナビゲーションメニュー（初期状態は左側の画面外に隠す） */
-.nav-menu {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 75%;
-  max-width: 280px;
-  height: 100vh;
-  background-color: rgba(247, 246, 243, 0.98); /* サロンのトーンに合わせた上品な白 */
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
-  padding: 100px 30px 30px;
-  transition: left 0.3s ease-in-out;
-  z-index: 1001;
+* {
   box-sizing: border-box;
-}
-
-/* メニュー開いた時（画面内に出現） */
-.nav-menu.active {
-  left: 0;
-}
-
-.nav-menu ul {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.nav-menu ul li {
-  border-bottom: 1px solid #E5E2DC;
-  padding-bottom: 12px;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: #666;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0.08em;
-  display: block;
-  transition: color 0.3s;
-}
-
-.nav-menu a:hover,
-.nav-menu a.current {
-  color: #B8AFA2;
-}
-
-
-/* =========================
-   共通・コンテンツスタイル
-========================= */
-
-/* ヒーロー */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.hero h1 {
-  font-size: 22px;
-  line-height: 1.6;
-}
-
-.hero p {
-  font-size: 14px;
-  color: #666;
-}
-
-section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.about-img, .feature-img {
-  width: 100%;
-  max-width: 280px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  line-height: 2;
-}
-
-.lower-main {
-  min-height: 60vh;
-  padding-top: 20px;
-}
-
-.section-lead {
-  font-size: 14px;
-  color: #666;
-  margin-top: -10px;
-  margin-bottom: 30px;
-}
-
-/* MENU (施術内容) */
-.menu-box {
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
-  text-align: left;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 25px;
-  border-radius: 12px;
-  box-sizing: border-box;
-}
-
-.menu-box h3 {
-  font-size: 16px;
-  color: #333;
-  margin-top: 25px;
-  border-left: 3px solid #B8AFA2;
-  padding-left: 10px;
-}
-.menu-box h3:first-child {
-  margin-top: 0;
-}
-
-.menu-box p {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #555;
-}
-
-/* PRICE (料金案内) */
-.price-table {
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto 15px;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.price-table tr {
-  border-bottom: 1px solid #E5E2DC;
-}
-
-.price-table th, .price-table td {
-  padding: 15px 10px;
-}
-
-.price-table th {
-  text-align: left;
-  font-weight: normal;
-  color: #555;
-}
-
-.price-table td {
-  text-align: right;
-  font-weight: bold;
-  color: #333;
-}
-
-.price-note {
-  font-size: 12px;
-  color: #888;
-}
-
-/* QUALIFICATION */
-.qualification-box{
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 30px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 12px;
-}
-
-.qualification-title{
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* ACCESS */
-.access-box{
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.address{
-  line-height: 1.8;
-}
-
-.access-box iframe{
-  width: 100%;
-  height: 320px;
-  border: none;
-  border-radius: 12px;
-  margin: 25px 0;
-}
-
-.access h3{
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.access-text{
-  text-align: left;
-  line-height: 1.9;
-}
-
-/* RESERVE / FOOTER / FIXED BUTTONS */
-.reserve-text{
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 13px;
-  color: #666;
-}
-
-.fixed-buttons{
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-}
-
-.fixed-tel, .fixed-line {
-  display: block;
-  text-align: center;
-  padding: 14px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.fixed-tel{
-  background: #B8AFA2;
-  border-radius: 20px 20px 0 0;
-}
-
-.fixed-line{
-  background: #2ECC71;
-  border-radius: 0 0 20px 20px;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-@media (max-width: 768px) {
-  .logo {
-    width: 140px;
+body {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  background: linear-gradient(
+    180deg,
+    #f7f6f3 0%,
+    #f2efea 100%
+  );
+  color: #3f3936;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+.sp-only {
+  display: none;
+}
+
+
+/* ==============================
+   ヘッダー
+============================== */
+
+.sub-header {
+  min-height: 90px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-name {
+  color: #59443d;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+
+/* ==============================
+   メニューボタン
+============================== */
+
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1200;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 0 12px;
+
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(80, 65, 58, 0.12);
+  border-radius: 50%;
+
+  box-shadow: 0 5px 18px rgba(60, 45, 40, 0.12);
+
+  cursor: pointer;
+}
+
+.menu-button span {
+  width: 100%;
+  height: 2px;
+  background: #59443d;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+}
+
+.menu-button.is-open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-button.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.is-open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* ==============================
+   サイドメニュー
+============================== */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+
+  width: min(82%, 320px);
+  height: 100dvh;
+
+  padding: 100px 35px 40px;
+
+  background: #f7f4ef;
+
+  transform: translateX(-105%);
+  transition: transform 0.35s ease;
+
+  overflow-y: auto;
+}
+
+.side-menu.is-open {
+  transform: translateX(0);
+}
+
+.side-menu-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-title {
+  margin: 0 0 24px;
+  color: #967064;
+  font-size: 14px;
+  letter-spacing: 0.24em;
+}
+
+.side-menu a {
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(90, 70, 62, 0.16);
+  color: #493d39;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  color: #a06f5d;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  background: rgba(35, 28, 25, 0.35);
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+}
+
+.menu-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+
+/* ==============================
+   ページタイトル
+============================== */
+
+.page-hero {
+  padding: 60px 20px 70px;
+  text-align: center;
+}
+
+.page-hero-en {
+  margin: 0 0 8px;
+  color: #a0705f;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+}
+
+.page-hero h1 {
+  margin: 0 0 18px;
+  color: #493c37;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.page-hero > p:last-child {
+  margin: 0;
+  color: #756b66;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+/* ==============================
+   料金表
+============================== */
+
+.price-section {
+  width: min(920px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.price-category {
+  margin-bottom: 55px;
+  padding: 34px;
+
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(115, 90, 80, 0.1);
+  border-radius: 18px;
+
+  box-shadow: 0 12px 30px rgba(70, 52, 45, 0.06);
+}
+
+.price-category h2 {
+  display: inline-block;
+
+  margin: 0 0 28px;
+  padding: 10px 18px;
+
+  background: #dcebec;
+  color: #403634;
+
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+.price-table-head,
+.price-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px 120px;
+  gap: 20px;
+  align-items: center;
+}
+
+.price-table-head {
+  padding: 0 15px 12px;
+  border-bottom: 1px solid rgba(80, 60, 52, 0.14);
+
+  color: #89736c;
+  font-size: 13px;
+}
+
+.price-row {
+  padding: 22px 15px;
+  border-bottom: 1px solid rgba(80, 60, 52, 0.1);
+}
+
+.price-row:last-child {
+  border-bottom: 0;
+}
+
+.price-name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.price-name small {
+  display: block;
+  margin-top: 5px;
+  color: #b04d52;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.price-time {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.price-value {
+  color: #bd3a48;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+
+/* ==============================
+   定期券・回数券
+============================== */
+
+.ticket-section {
+  margin-top: 80px;
+  padding: 80px 20px;
+
+  background: rgba(225, 217, 207, 0.55);
+}
+
+.section-heading {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section-heading p {
+  margin: 0 0 8px;
+  color: #a0705f;
+  font-size: 13px;
+  letter-spacing: 0.24em;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.ticket-grid {
+  width: min(920px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.ticket-card {
+  padding: 34px;
+
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+
+  box-shadow: 0 12px 30px rgba(70, 52, 45, 0.06);
+}
+
+.ticket-label {
+  display: inline-block;
+
+  margin: 0 0 16px;
+  padding: 5px 14px;
+
+  background: #c99778;
+  border-radius: 999px;
+
+  color: #fff;
+  font-size: 13px;
+}
+
+.ticket-card h3 {
+  margin: 0 0 18px;
+  font-size: 23px;
+}
+
+.ticket-price {
+  margin: 0 0 25px;
+  color: #c83a40;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.ticket-price span {
+  margin-right: 10px;
+  color: #554b47;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ticket-card ul {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.ticket-card li {
+  margin-bottom: 12px;
+  line-height: 1.9;
+}
+
+
+/* ==============================
+   施術内容
+============================== */
+
+.treatment-section {
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.treatment-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 43%) minmax(0, 1fr);
+  gap: 50px;
+  align-items: center;
+
+  margin-bottom: 70px;
+  padding: 40px;
+
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 20px;
+
+  box-shadow: 0 12px 30px rgba(70, 52, 45, 0.06);
+}
+
+.treatment-card:nth-child(even) .treatment-image-wrap {
+  order: 2;
+}
+
+.treatment-card:nth-child(even) .treatment-content {
+  order: 1;
+}
+
+.treatment-image-wrap {
+  position: relative;
+}
+
+.treatment-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+
+  background: #e8e2dc;
+  border-radius: 14px;
+}
+
+.treatment-duration {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+
+  width: 86px;
+  height: 86px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ca9271;
+  border-radius: 50%;
+
+  color: #fff;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.treatment-label {
+  margin: 0 0 10px;
+  color: #a0705f;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.treatment-content h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  line-height: 1.65;
+}
+
+.treatment-content h3 {
+  margin: 0 0 18px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.treatment-description {
+  margin: 0;
+  color: #5d5551;
+  font-size: 15px;
+  line-height: 2.1;
+}
+
+.treatment-price {
+  margin: 22px 0 0;
+  color: #c23e43;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.treatment-option {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 35px;
+  align-items: center;
+
+  margin-bottom: 35px;
+  padding: 35px 45px;
+
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 18px;
+}
+
+.treatment-option-time {
+  width: 120px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ca9271;
+  border-radius: 50%;
+
+  color: #fff;
+  font-size: 29px;
+  font-weight: 600;
+}
+
+.treatment-option h2 {
+  margin: 0 0 13px;
+  font-size: 23px;
+}
+
+.treatment-option p {
+  line-height: 1.9;
+}
+
+
+/* ==============================
+   ページリンク
+============================== */
+
+.page-link-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.page-link-section p {
+  margin: 0 0 24px;
+  color: #6b625d;
+}
+
+.page-link-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 240px;
+  padding: 16px 25px;
+
+  background: #8d7066;
+  border-radius: 999px;
+
+  color: #fff;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.page-link-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.88;
+}
+
+
+/* ==============================
+   フッター
+============================== */
+
+footer {
+  padding: 50px 20px 100px;
+  text-align: center;
+}
+
+footer p {
+  margin: 7px 0;
+  color: #756c67;
+  font-size: 13px;
+}
+
+
+/* ==============================
+   スマホ
+============================== */
+
+@media (max-width: 700px) {
+
+  .sp-only {
+    display: block;
   }
+
+  .sub-header {
+    min-height: 78px;
+  }
+
+  .site-name {
+    font-size: 14px;
+  }
+
+  .menu-button {
+    top: 15px;
+    left: 15px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .page-hero {
+    padding: 45px 20px 55px;
+  }
+
+  .page-hero h1 {
+    font-size: 26px;
+  }
+
+  .price-section {
+    width: min(100% - 24px, 920px);
+  }
+
+  .price-category {
+    margin-bottom: 32px;
+    padding: 24px 18px;
+    border-radius: 14px;
+  }
+
+  .price-category h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+
+  .price-table-head {
+    display: none;
+  }
+
+  .price-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 15px;
+    padding: 19px 5px;
+  }
+
+  .price-name {
+    grid-column: 1 / -1;
+    font-size: 15px;
+  }
+
+  .price-time {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .price-value {
+    font-size: 19px;
+  }
+
+  .ticket-section {
+    margin-top: 55px;
+    padding: 60px 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 22px;
+  }
+
+  .ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-card {
+    padding: 27px 22px;
+  }
+
+  .ticket-card h3 {
+    font-size: 21px;
+  }
+
+  .treatment-section {
+    width: min(100% - 24px, 960px);
+  }
+
+  .treatment-card {
+    display: block;
+    margin-bottom: 38px;
+    padding: 20px;
+  }
+
+  .treatment-card:nth-child(even) .treatment-image-wrap,
+  .treatment-card:nth-child(even) .treatment-content {
+    order: initial;
+  }
+
+  .treatment-image-wrap {
+    margin-bottom: 30px;
+  }
+
+  .treatment-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .treatment-duration {
+    top: -12px;
+    left: -8px;
+    width: 72px;
+    height: 72px;
+    font-size: 18px;
+  }
+
+  .treatment-content h2 {
+    font-size: 20px;
+  }
+
+  .treatment-content h3 {
+    font-size: 15px;
+  }
+
+  .treatment-description {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .treatment-price {
+    font-size: 25px;
+  }
+
+  .treatment-option {
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 18px;
+
+    padding: 24px 18px;
+  }
+
+  .treatment-option-time {
+    width: 76px;
+    height: 76px;
+    font-size: 19px;
+  }
+
+  .treatment-option h2 {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .treatment-option p {
+    font-size: 14px;
+  }
+
 }
