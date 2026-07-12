@@ -1,89 +1,265 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>料金案内 | SUGIMOTO LAB’</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <title>料金案内 | SUGIMOTO LAB'</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header class="header">
-  <button class="menu-btn" id="js-menu-btn" aria-label="メニューを開く">
+  <!-- メニューボタン -->
+  <button
+    class="menu-button"
+    id="menuButton"
+    type="button"
+    aria-label="メニューを開く"
+    aria-controls="sideMenu"
+    aria-expanded="false"
+  >
     <span></span>
     <span></span>
     <span></span>
   </button>
 
-  <a href="index.html"><img src="images/logo.png" class="logo" alt="SUGIMOTO LAB’"></a>
-  
-  <nav class="nav-menu" id="js-nav-menu">
-    <ul>
-      <li><a href="index.html">HOME</a></li>
-      <li><a href="menu.html">施術内容</a></li>
-      <li><a href="price.html" class="current">料金案内</a></li>
-      <li><a href="index.html#access">アクセス</a></li>
-    </ul>
+  <!-- 背景オーバーレイ -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="sideMenu" aria-hidden="true">
+    <div class="side-menu-inner">
+      <p class="side-menu-title">MENU</p>
+
+      <a href="index.html">ホーム</a>
+      <a href="treatment.html">施術内容</a>
+      <a href="price.html">料金案内</a>
+      <a href="index.html#access">アクセス</a>
+      <a href="あなたのLINEのURL" target="_blank" rel="noopener">
+        LINE予約
+      </a>
+    </div>
   </nav>
-</header>
 
-<main class="lower-main">
-  <section class="price">
-    <h2>PRICE</h2>
-    <p class="section-lead">安心の料金体系</p>
-    
-    <table class="price-table">
-      <tr>
-        <th>初回カウンセリング料</th>
-        <td>¥2,000</td>
-      </tr>
-      <tr>
-        <th>総合整体コース（50分）</th>
-        <td>¥6,000</td>
-      </tr>
-      <tr>
-        <th>プレミアム鍼灸整体（70分）</th>
-        <td>¥8,500</td>
-      </tr>
-    </table>
-    <p class="price-note">※価格はすべて税込です。</p>
-  </section>
+  <header class="sub-header">
+    <a href="index.html" class="site-name">
+      SUGIMOTO LAB'
+    </a>
+  </header>
 
-  <section class="reserve">
-    <p class="reserve-text">
-      ご予約・お問い合わせは<br>
-      お電話またはLINEよりお気軽にご連絡ください。
-    </p>
-  </section>
-</main>
+  <main>
 
-<footer>
-  <p>無理なく、整える。</p>
-  <p>© SUGIMOTO LAB’</p>
-</footer>
-  
-<div class="fixed-buttons">
-  <a href="tel:07094495309" class="fixed-tel">
-    📞 電話で予約
-  </a>
+    <!-- ページタイトル -->
+    <section class="page-hero">
+      <p class="page-hero-en">PRICE</p>
+      <h1>料金案内</h1>
+      <p>すべて税込価格です</p>
+    </section>
 
-  <a href="https://lin.ee/7CNkwtA" class="fixed-line">
-    LINEで予約
-  </a>
-</div>
+    <!-- 通常料金 -->
+    <section class="price-section">
 
-<script>
-  const menuBtn = document.getElementById('js-menu-btn');
-  const navMenu = document.getElementById('js-nav-menu');
+      <!-- 骨盤調整 -->
+      <div class="price-category">
+        <h2>痛みの根本改善○<br class="sp-only">骨盤調整</h2>
 
-  menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
-    navMenu.classList.toggle('active');
-  });
-</script>
-  
+        <div class="price-table-head">
+          <span>施術内容</span>
+          <span>時間</span>
+          <span>料金</span>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">骨盤調整</div>
+          <div class="price-time">30分</div>
+          <div class="price-value">3,980円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            骨盤調整＋ハイボルト治療
+          </div>
+          <div class="price-time">30分</div>
+          <div class="price-value">3,980円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            骨盤調整＋鍼 or お灸治療
+          </div>
+          <div class="price-time">30分</div>
+          <div class="price-value">3,980円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            骨盤調整＋ハイボルト＋鍼 or お灸治療
+          </div>
+          <div class="price-time">60分</div>
+          <div class="price-value">7,980円</div>
+        </div>
+      </div>
+
+      <!-- オーダーメイドマッサージ -->
+      <div class="price-category">
+        <h2>オーダーメイド<br class="sp-only">マッサージ</h2>
+
+        <div class="price-table-head">
+          <span>施術内容</span>
+          <span>時間</span>
+          <span>料金</span>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            オーダーメイドマッサージ
+          </div>
+          <div class="price-time">40分</div>
+          <div class="price-value">3,980円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            オーダーメイドマッサージ＋ハイボルト治療
+          </div>
+          <div class="price-time">40分</div>
+          <div class="price-value">3,980円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            オーダーメイドマッサージ＋鍼 or お灸治療
+          </div>
+          <div class="price-time">40分</div>
+          <div class="price-value">3,980円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            オーダーメイドマッサージ＋鍼 or お灸治療＋ハイボルト
+          </div>
+          <div class="price-time">60分</div>
+          <div class="price-value">6,980円</div>
+        </div>
+      </div>
+
+      <!-- オリジナルコース -->
+      <div class="price-category">
+        <h2>オリジナルコース</h2>
+
+        <div class="price-table-head">
+          <span>施術内容</span>
+          <span>時間</span>
+          <span>料金</span>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">美容鍼</div>
+          <div class="price-time">30分</div>
+          <div class="price-value">5,500円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">
+            炭酸ドライヘッドマッサージ
+            <small>各メニューに追加できます</small>
+          </div>
+          <div class="price-time">10分</div>
+          <div class="price-value">1,000円</div>
+        </div>
+
+        <div class="price-row">
+          <div class="price-name">延長マッサージ</div>
+          <div class="price-time">10分</div>
+          <div class="price-value">500円</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 定期券・回数券 -->
+    <section class="ticket-section">
+      <div class="section-heading">
+        <p>PASS TICKET</p>
+        <h2>定期券・回数券のご案内</h2>
+      </div>
+
+      <div class="ticket-grid">
+
+        <!-- 定期券 -->
+        <article class="ticket-card">
+          <p class="ticket-label">定期券</p>
+
+          <h3>1か月定期券</h3>
+
+          <p class="ticket-price">
+            <span>料金</span>
+            10,000円
+          </p>
+
+          <ul>
+            <li>ご購入日から1か月間有効</li>
+            <li>
+              鍼治療 or ハイボルト治療 or 骨盤調整が受け放題
+            </li>
+            <li>
+              ご利用期間中は、窓口負担を一律1,500円でご利用いただけます
+            </li>
+          </ul>
+        </article>
+
+        <!-- 回数券 -->
+        <article class="ticket-card">
+          <p class="ticket-label">回数券</p>
+
+          <h3>5回券</h3>
+
+          <p class="ticket-price">
+            <span>料金</span>
+            10,000円
+          </p>
+
+          <ul>
+            <li>ご購入日から6か月間有効</li>
+            <li>
+              鍼治療 or ハイボルト治療 or 骨盤調整の中から、
+              お好きな施術を5回利用可能
+            </li>
+            <li>
+              有効期間中は、窓口負担を一律1,500円でご利用いただけます
+            </li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 施術内容へのリンク -->
+    <section class="page-link-section">
+      <p>各施術について詳しく知りたい方はこちら</p>
+
+      <a href="treatment.html" class="page-link-button">
+        施術内容を見る
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>無理なく、整える。</p>
+    <p>© SUGIMOTO LAB’</p>
+  </footer>
+
+  <script src="js/menu.js"></script>
 </body>
 </html>
